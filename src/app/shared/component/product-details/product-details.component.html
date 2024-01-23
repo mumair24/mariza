@@ -1,0 +1,315 @@
+<ion-header [translucent]="true">
+  <app-header></app-header>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="!product || loader" class="flex justify-center h-[232px] pt-20">
+      <ion-spinner name="crescent"></ion-spinner>
+  </div>
+  <div class="w-full lg:w-[80%] lg:mx-auto px-5 lg:px-0" *ngIf="product || loader">
+    <div class="flex justify-between items-center w-full pt-5 overflow-x-auto">
+      <img [src]="product?.imageUrl" alt=""
+        class="w-[90%] h-[500px] sm:w-[80%] sm:h-[500px] md:w-[70%] md:h-[500px] lg:w-[60%] lg:h-[600px] xl:w-[30%] xl:h-auto mr-5 rounded-3xl">
+      <img [src]="product?.imageUrl" alt=""
+        class="w-[90%] h-[500px] sm:w-[80%] sm:h-[500px] md:w-[70%] md:h-[500px] lg:w-[60%] lg:h-[600px] xl:w-[30%] xl:h-auto mr-5 rounded-3xl">
+      <img [src]="product?.imageUrl" alt=""
+        class="w-[90%] h-[500px] sm:w-[80%] sm:h-[500px] md:w-[70%] md:h-[500px] lg:w-[60%] lg:h-[600px] xl:w-[30%] xl:h-auto rounded-3xl">
+    </div>
+  </div>
+  <div class="w-full lg:w-[80%] lg:mx-auto px-5 lg:px-0" *ngIf="product || loader">
+    <div class="lg:flex lg:justify-between w-full pt-10">
+      <div class="lg:w-2/3 lg:mx-0 w-full mx-auto">
+        <div class="lg:flex lg:justify-between lg:items-center w-full border border-gray-100 rounded-xl pl-2">
+          <div class="font-sans lg:w-1/3 lg:mx-0 w-full mx-auto">
+            <p class="text-2xl lg:text-lg font-bold font-sans text-gray-800">{{product?.productName}}</p>
+            <p class="text-gray-400 lg:text-sm text-2xl pt-2">{{product?.brandName}}</p>
+            <p class="font-bold text-gray-800 lg:text-base text-2xl pt-2">${{product?.price}}.00 -
+              ${{product?.price1}}.00</p>
+          </div>
+          <div class="lg:w-2/3 w-full">
+            <p class="font-bold pt-3 font-sans text-2xl lg:text-base">Product Details</p>
+            <div class="flex justify-between items-center text-xl lg:text-sm pt-2">
+              <p class="font-medium lg:text-sm text-xl">Brand</p>
+              <p class="pr-2 text-gray-400 lg:text-xs text-lg">{{product?.brandName}}</p>
+            </div>
+            <p class="border border-t-1"></p>
+            <div class="flex justify-between items-center text-sm pt-2">
+              <p class="font-medium lg:text-sm text-xl">Size</p>
+              <p class="pr-2 text-gray-400 lg:text-xs text-lg">{{product?.sizeName}}</p>
+            </div>
+            <p class="border border-t-1"></p>
+            <div class="flex justify-between items-center text-sm pt-2 pb-2">
+              <p class="font-medium lg:text-sm text-xl">Lining</p>
+              <p class="pr-2 text-gray-400 lg:text-xs text-lg">{{product?.liningName}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-2 border border-gray-100 rounded-xl pl-2">
+          <p class="font-bold pt-3 text-xl lg:text-base">Description</p>
+          <p class="pr-2 text-gray-400 lg:text-xs text-base py-2">{{product?.description}}</p>
+        </div>
+        <div class="mt-4 w-full border border-gray-50 shadow-sm rounded-xl mb-4 p-2">
+          <h2 class="text-lg font-bold font-sans mb-2 pl-2 pt-2">Size Chart</h2>
+          <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200 w-full">
+              <thead>
+                <tr class="">
+                  <th scope="col" class="px-2 py-3 text-left text-xs font-light text-white uppercase tracking-wider">
+                    Sizes
+                  </th>
+                  <th scope="col" class="px-2 py-3 text-left text-xs font-light text-white uppercase tracking-wider">
+                    Shoulder
+                  </th>
+                  <th scope="col" class="px-2 py-3 text-left text-xs font-light text-white uppercase tracking-wider">
+                    Chest
+                  </th>
+                  <th scope="col" class="px-2 py-3 text-left text-xs font-light text-white uppercase tracking-wider">
+                    Waist
+                  </th>
+                  <th scope="col" class="px-2 py-3 text-left text-xs font-light text-white uppercase tracking-wider">
+                    Hip
+                  </th>
+                  <th scope="col" class="px-2 py-3 text-left text-xs font-light text-white uppercase tracking-wider">
+                    Armhole
+                  </th>
+                  <th scope="col" class="px-2 py-3 text-left text-xs font-light text-white uppercase tracking-wider">
+                    Sleeves Length
+                  </th>
+                  <th scope="col" class="px-2 py-3 text-left text-xs font-light text-white uppercase tracking-wider">
+                    Trouser Length
+                  </th>
+                  <th scope="col" class="px-2 py-3 text-left text-xs font-light text-white uppercase tracking-wider">
+                    Shirt Length
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                <tr>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    X
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    15.5
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    36
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    30
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    37
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    8
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    24
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    38
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    28
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    M
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    16.5
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    38
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    32
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    39
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    9
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    25
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    40
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    30
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    L
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    17.5
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    40
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    33
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    39
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    10
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    26
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    42
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    32
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    XL
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    18.5
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    42
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    35
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    41
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    12
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    28
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    42
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    33
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    XXL
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    19.5
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    44
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    36
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    42
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    13
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    30
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    44
+                  </td>
+                  <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                    34
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="lg:ml-3 px-3 pb-4 pt-2 rounded-xl border border-gray-50 h-[380px]">
+        <div class="lg:flex lg:items-center">
+          <div class="lg:w-1/2 w-full mr-2">
+            <label class="block text-xs font-medium text-gray-700 mb-1">Size:</label>
+            <ng-select placeholder="Default"
+              class="lg:w-[150px] border rounded-md text-xs cursor-pointer text-gray-800 placeholder-gray-800"
+              [items]="sizes" bindLabel="name" bindValue="id" [(ngModel)]="selectedSize">
+            </ng-select>
+          </div>
+          <div class="lg:w-1/2 lg:mt-0 mt-3 w-full">
+            <label class="block text-xs font-medium text-gray-700 mb-1">Stitching:</label>
+            <ng-select placeholder="Stitched"
+              class="lg:w-[160px] border rounded-md text-xs cursor-pointer text-gray-800 placeholder-gray-800"
+              [items]="stitching" bindLabel="name" bindValue="id" [(ngModel)]="selectedStitching">
+            </ng-select>
+          </div>
+        </div>
+        <div class="lg:w-1/2 w-full mt-4">
+          <label class="block text-sm font-medium text-gray-700 mb-1 w-full">Lining:</label>
+          <ng-select placeholder="Full body + sleeve lining (+$5)"
+            class="lg:w-80 border rounded-md text-xs cursor-pointer text-gray-800 placeholder-gray-800" [items]="lining"
+            bindLabel="name" bindValue="id">
+          </ng-select>
+        </div>
+        <div class="my-1">
+          <p class="font-bold font-sans lg:text-lg text-2xl text-gray-800 pt-2" *ngIf="product !== null">${{product.price }}.00</p>
+        </div>
+        <div class="flex justify-between items-center mt-3 w-full ">
+          <div class="lg:ml-1 w-full">
+            <button type="button" *ngIf="product !== null" (click)="addToCartItem(product, 'addToCart')"
+              class="py-4 w-full rounded-2xl bg-gray-200 text-black font-semibold text-sm">Add to Cart</button>
+          </div>
+        </div>
+        <div class="w-full bg-black text-center text-white mt-3 rounded-3xl text-sm cursor-pointer"
+          (click)="addToCartItem(product, 'buyNow')">
+          <button type="button" class="py-3">Buy Now</button>
+        </div>
+        <div
+          class="w-full relative bg-white text-center text-black border cursor-pointer border-black mt-3 font-light rounded-3xl text-sm"
+          *ngIf="product !== null" (click)="addToWishlistItem(product)">
+          <ion-icon name="heart-outline" class="absolute top-[16px] left-[83px] text-lg hidden lg:block"></ion-icon>
+          <button type="button" class="py-4">Add to Wishlist</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="w-full lg:w-[80%] lg:mx-auto px-5 lg:px-0 !mt-20 lg:!mt-0 xl:!mt-0 2xl:!mt-0" *ngIf="product">
+    <p class="font-bold text-lg w-full text-start pt-7 pb-2">Related Products</p>
+    <div class="flex items-center flex-wrap w-full mb-2">
+      <div class="w-[45%] sm:w-[45%] lg:w-[20%] xl:w-[16%] mr-1.5 mb-3"
+        *ngFor="let product of productsByCategory; index as i">
+        <img class="w-full rounded-2xl h-[250px]" [src]="product.imageUrl" alt="">
+        <div class="px-2 text-sm relative">
+          <p class="font-bold py-1 font-sans">{{product.productName}}</p>
+          <p class="text-gray-400 pb-1 text-xs">{{product.categoryName}}</p>
+          <p class="font-bold font-sans">${{product.price1}}.00 - ${{product.price}}.00</p>
+          <div class="flex justify-between items-center py-1">
+            <button class="bg-gray-300 py-2 px-1 lg:px-5 xl:px-3.5 rounded-xl text-sm text-gray-600"
+              (click)="toggleAction(i)">Select
+              Options</button>
+            <div class="cursor-pointer" (click)="toggleHeart(i);  addToWishlistItem(product)">
+              <ion-icon
+                [ngClass]="product.wishList ? 'text-lg bg-gray-300 text-red-700 p-2 mt-1 rounded-xl' : 'text-lg bg-gray-300 text-gray-400 p-2 mt-1 rounded-xl'"
+                [name]="product.wishList ? 'heart' : 'heart-outline'"></ion-icon>
+            </div>
+          </div>
+          <div class="bg-white shadow-md w-1/2 text-center font-sans cursor-pointer absolute bottom-10 right-0"
+            *ngIf="showAction[i]" [@fadeInOut]>
+            <p class="py-2 text-gray-400 font-sans hover:bg-gray-300 transition duration-300">View</p>
+            <p class="py-2 text-gray-400 font-sans hover:bg-gray-300 transition duration-300"
+              (click)="addToCartItem(product, 1)">Add to Cart</p>
+            <p class="py-2 text-gray-400 font-sans hover:bg-gray-300 transition duration-300">Checkout</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</ion-content>

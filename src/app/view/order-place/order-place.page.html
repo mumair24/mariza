@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <app-header></app-header>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <p class="font-bold text-lg w-full text-center py-16 pb-5">Order Placed</p>
+  </div>
+  <div class="w-full lg:w-[80%] lg:mx-auto px-5 lg:px-0">
+    <div class="md:flex md:justify-between mb-10">
+      <div class="border border-gray-200 p-2 rounded-2xl md:w-1/2 w-full mr-5">
+        <p class="font-bold font-sans py-2">Order Details</p>
+        <p class="border border-t-gray-500"></p>
+        <div>
+          <p class="text-xs font-medium pr-1 pt-1.5">Products: <span class="text-gray-400 text-xs font-sans font-normal">3</span></p>
+          <p class="text-xs font-medium pr-1 pt-1.5">To: <span class="text-gray-400 text-xs font-sans font-normal">John Doe</span></p>
+          <p class="text-xs font-medium pr-1 pt-1.5">Phone: <span class="text-gray-400 text-xs font-sans font-normal">+92 300 1234567</span></p>
+          <p class="text-xs font-medium pr-1 pt-1.5">Email: <span class="text-gray-400 text-xs font-sans font-normal">{{email}}</span></p>
+          <p class="text-xs font-medium pr-1 pt-1.5">Delivery Address: <span class="text-gray-400 text-xs font-sans font-normal"> 184 Griffin Street, Gilbert, AZ 85233</span></p>
+          <p class="text-xs font-medium pr-1 pt-1.5">Postal Code: <span class="text-gray-400 text-xs font-sans font-normal">12345</span></p>
+          <p class="text-xs font-medium pr-1 pt-1.5">Order Notes: <span class="text-gray-400 text-xs font-sans font-normal">-</span></p>
+        </div>
+        <p class="border border-t-gray-500"></p>
+        <div class="">
+          <div class="flex justify-between items-center py-1">
+            <p class="text-xs font-medium pr-1">Total Amount:</p>
+            <p class="text-xs font-medium">$135.00</p>
+          </div>
+          <div class="flex justify-between items-center py-1">
+            <p class="text-xs font-medium pr-1">Tax:</p>
+            <p class="text-xs font-medium">$35.00</p>
+          </div>
+          <div class="flex justify-between items-center py-1">
+            <p class="text-xs font-medium pr-1">Delivery Fee:</p>
+            <p class="text-xs font-medium">$30.00</p>
+          </div>
+          <p class="border border-t-gray-500"></p>
+          <div class="flex justify-between items-center py-1">
+            <p class="text-sm text-gray-800 font-extrabold pr-1">Subtotal:</p>
+            <p class="text-sm text-gray-800 font-extrabold">$200.00</p>
+          </div>
+        </div>
+      </div>
+      <div class="md:w-1/2 w-full text-center">
+        <ion-icon name="checkmark-circle" class="text-[200px] font-extrabold"></ion-icon>
+        <p>Your order has been successfully placed.</p>
+        <div routerLink="/home" class="md:w-1/2 w-full border-2 mx-auto mt-6 cursor-pointer text-center bg-black text-white font-sans rounded-3xl">
+          <button type="button" class="py-3">Return to Homepage</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</ion-content>

@@ -1,0 +1,69 @@
+<ion-header [translucent]="true">
+  <app-header></app-header>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <p class="font-bold text-lg w-full text-center py-10 pb-5">Checkout</p>
+  </div>
+  <div class="w-full lg:w-[80%] lg:mx-auto px-5 lg:px-0">
+    <div class="flex items-center flex-wrap pb-10 border border-gray-300 rounded-2xl pl-3">
+      <div class="w-[95%] lg:w-[310px] xl:w-[29%] flex justify-between mt-10 mr-5 xl:mr-9" *ngFor="let cart of cartItems">
+        <img class="w-1/2 h-[170px] rounded-2xl" alt="Silhouette of mountains" [src]="cart.imageUrl" />
+        <div class="w-2/3 ml-3 font-sans">
+          <div class="flex justify-between items-center">
+            <p class="font-bold">{{cart.productName}}</p>
+            <p class="cursor-pointer hover:text-gray-700" (click)="removeCart(cart)"><ion-icon name="trash"></ion-icon>
+            </p>
+          </div>
+          <div class="">
+            <span class="text-sm font-bold pr-1">Size:</span>
+            <span class="text-gray-400 text-sm">{{cart.sizeName}}</span>
+          </div>
+          <div class="">
+            <span class="text-sm font-bold pr-1">Stitching:</span>
+            <span class="text-gray-400 text-sm">{{cart.stitchingName}}</span>
+          </div>
+          <div class="">
+            <span class="text-sm font-bold pr-1">Lining:</span>
+            <span class="text-gray-400 text-xs">{{cart.liningName}}</span>
+          </div>
+          <div class="">
+            <span class="text-sm font-bold pr-1">Price:</span>
+            <span class="text-gray-400 text-sm">${{cart.price}}.00</span>
+          </div>
+          <div class="flex items-center">
+            <p class="font-bold pr-1 text-sm">Quantity:</p>
+            <div class="text-gray-400">
+              <span class="text-gray-500">{{cart.quantity}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex md:justify-end justify-center my-14">
+      <div class="w-[350px]">
+        <div class="flex justify-between items-center py-1">
+          <p class="text-sm font-medium pr-1">Total Amount:</p>
+          <p class="text-sm font-medium">${{total}}.00</p>
+        </div>
+        <div class="flex justify-between items-center py-1">
+          <p class="text-sm font-medium pr-1">Tax:</p>
+          <p class="text-sm font-medium">$35.00</p>
+        </div>
+        <div class="flex justify-between items-center py-1">
+          <p class="text-sm font-medium pr-1">Delivery Fee:</p>
+          <p class="text-sm font-medium">$30.00</p>
+        </div>
+        <div class="flex justify-between items-center py-10">
+          <p class="text-lg text-gray-800 font-extrabold pr-1">Subtotal:</p>
+          <p class="text-lg text-gray-800 font-extrabold">${{subtotal}}.00</p>
+        </div>
+        <div class="bg-black text-white font-medium text-center sm:w-full rounded-3xl cursor-pointer" routerLink="/payment-details">
+          <button type="button" class="py-3">Proceed for Payment</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</ion-content>

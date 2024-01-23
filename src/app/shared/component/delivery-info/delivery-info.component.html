@@ -1,0 +1,178 @@
+<ion-header [translucent]="true">
+  <app-header></app-header>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <p class="font-bold text-lg w-full text-center py-10 pb-5">Delivery Information</p>
+  </div>
+  <div class="w-full lg:w-[80%] lg:mx-auto px-5 lg:px-0">
+    <form [formGroup]="deliveryForm" (ngSubmit)="formSubmit()">
+      <div class="md:flex md:items-center w-full">
+        <div class="md:w-1/3 my-2 md:my-0 pr-4">
+          <label for="fName" class="block md:text-xs text-sm pb-1">Full Name</label>
+          <input type="text" class="w-full border border-gray-300 py-3 px-2 rounded-xl text-xs placeholder-gray-400"
+            placeholder="John Doe" id="fName" formControlName="fName">
+          <div *ngIf="
+          f['fName'].invalid &&
+          (f['fName'].dirty || f['fName'].touched)
+        " class="text-xs text-red-500">
+            <div *ngIf="f['fName'].errors?.['required']">
+              Name is required.
+            </div>
+          </div>
+        </div>
+        <div class="md:w-1/3 my-2 md:my-0 pr-4">
+          <label for="phone" class="block md:text-xs text-sm pb-1">Phone Number</label>
+          <input type="text" class="w-full border border-gray-300 py-3 px-2 rounded-xl text-xs placeholder-gray-400"
+            placeholder="Enter a number" id="phone" formControlName="phone">
+          <div *ngIf="
+          f['phone'].invalid &&
+          (f['phone'].dirty || f['phone'].touched)
+        " class="text-xs text-red-500">
+            <div *ngIf="f['phone'].errors?.['required']">
+              Phone is required.
+            </div>
+          </div>
+        </div>
+        <div class="md:w-1/3 my-2 md:my-0 pr-4">
+          <label for="email" class="block md:text-xs text-sm pb-1">Email Address</label>
+          <input type="email" class="w-full border border-gray-300 py-3 px-2 rounded-xl text-xs placeholder-gray-400"
+            placeholder="example@email.com" id="email" formControlName="email">
+          <div *ngIf="
+          f['email'].invalid &&
+          (f['email'].dirty || f['email'].touched)
+        " class="text-xs text-red-500">
+            <div *ngIf="f['email'].errors?.['required']">
+              Email is required.
+            </div>
+            <div *ngIf="f['email'].errors?.['email']">
+              Please enter a valid email address.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="md:flex md:items-center w-full mt-3">
+        <div class="md:w-1/3 mb-2 md:mb-0 pr-4">
+          <label for="street" class="block md:text-xs text-sm pb-1">Street Address</label>
+          <input type="text" class="w-full border border-gray-300 py-3 px-2 rounded-xl text-xs placeholder-gray-400"
+            placeholder="Hourse Number & Street Name" id="street" formControlName="street">
+          <div *ngIf="
+          f['street'].invalid &&
+          (f['street'].dirty || f['street'].touched)
+        " class="text-xs text-red-500">
+            <div *ngIf="f['street'].errors?.['required']">
+              Street is required.
+            </div>
+          </div>
+        </div>
+        <div class="md:w-1/3 my-2 md:my-0 w-full pr-4">
+          <label for="street2" class="block md:text-xs text-sm pb-1">Street Address 2 (Optional)</label>
+          <input type="text" class="w-full border border-gray-300 py-3 px-2 rounded-xl text-xs placeholder-gray-400"
+            placeholder="Apartment, suite, unit, etc." id="street2" formControlName="streetOptional">
+        </div>
+        <div class="md:w-1/3 my-2 md:my-0 w-full pr-4">
+          <label class="block md:text-xs text-sm pb-1">Town/City</label>
+          <ng-select placeholder="Select--"
+            class="md:w-full border rounded-xl text-xs cursor-pointer text-gray-800 placeholder-gray-400"
+            bindLabel="name" bindValue="name" formControlName="city" [items]="cities" (change)="onCityChange()">
+          </ng-select>
+        </div>
+      </div>
+      <div class="md:flex md:items-center w-full md:my-6 pr-4">
+        <div class="md:w-1/3 my-2 md:my-0 md:mr-4">
+          <label class="block md:text-xs text-sm pb-1">State</label>
+          <ng-select placeholder="Select--"
+            class="md:w-full border rounded-xl text-xs cursor-pointer text-gray-800 placeholder-gray-400"
+            bindLabel="name" bindValue="isoCode" formControlName="state" [items]="states" (change)="onStateChange()">
+          </ng-select>
+        </div>
+        <div class="md:w-1/3 my-2 md:my-0 md:mr-4">
+          <label class="block md:text-xs text-sm pb-1">Country</label>
+          <ng-select placeholder="Select--"
+            class="md:w-full border rounded-xl text-xs cursor-pointer text-gray-800 placeholder-gray-400"
+            bindLabel="name" bindValue="isoCode" formControlName="country" [items]="countries"
+            (change)="onCountryChange()">
+          </ng-select>
+        </div>
+        <div class="md:w-1/3 my-2 md:my-0 w-full">
+          <label for="postCode" class="block text-xs pb-1">Postcode</label>
+          <input type="text" class="w-full border border-gray-300 py-3 px-2 rounded-xl text-xs placeholder-gray-400"
+            placeholder="#####" id="postCode" formControlName="postCode">
+          <div *ngIf="
+          f['postCode'].invalid &&
+          (f['postCode'].dirty || f['postCode'].touched)
+        " class="text-xs text-red-500">
+            <div *ngIf="f['postCode'].errors?.['required']">
+              PostCode is required.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="md:flex md:items-center mt-3 md:mt-0">
+        <div class="md:w-1/2 w-full mr-4 pr-4 md:pr-0">
+          <p class="text-sm font-semibold text-black">Shipping Type:</p>
+          <div class="border border-gray-400 rounded-xl">
+            <div class="flex justify-between items-center py-3">
+              <div class="flex items-center pl-2">
+                <input id="helper-radio" aria-describedby="helper-radio-text" type="radio"
+                  formControlName="shippingType" value="5.00"
+                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-900 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <div class="ms-2 text-sm">
+                  <label for="helper-radio" class="font-semibold text-black dark:text-gray-300">Standard Tracked</label>
+                  <p id="helper-radio-text" class="text-xs font-normal text-gray-500 dark:text-gray-300">Delivery in 2-3
+                    working days</p>
+                </div>
+              </div>
+              <p class="font-bold font-sans text-black pr-2">$5.00</p>
+            </div>
+            <p class="border border-t-gray-400"></p>
+            <div class="flex justify-between items-center py-3">
+              <div class="flex items-center pl-2">
+                <input id="helper-radio" aria-describedby="helper-radio-text" type="radio"
+                  formControlName="shippingType" value="7.50"
+                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-900 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <div class="ms-2 text-sm">
+                  <label for="helper-radio" class="font-semibold text-black dark:text-gray-300">2+ Outfits
+                    Tacked</label>
+                  <p id="helper-radio-text" class="text-xs font-normal text-gray-500 dark:text-gray-300">Delivery in 2-3
+                    working days</p>
+                </div>
+              </div>
+              <p class="font-bold font-sans text-black pr-2">$7.50</p>
+            </div>
+            <p class="border border-t-gray-400"></p>
+            <div class="flex justify-between items-center py-3">
+              <div class="flex items-center pl-2">
+                <input id="helper-radio" aria-describedby="helper-radio-text" type="radio"
+                  formControlName="shippingType" value="13.00"
+                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-900 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                <div class="ms-2 text-sm">
+                  <label for="helper-radio" class="font-semibold text-black dark:text-gray-300">Special Delivery</label>
+                  <p id="helper-radio-text" class="text-xs font-normal text-gray-500 dark:text-gray-300">Delivery in 2-3
+                    working days</p>
+                </div>
+              </div>
+              <p class="font-bold font-sans text-black pr-2">$13.00</p>
+            </div>
+          </div>
+          <p class="text-xs font-normal text-gray-500 dark:text-gray-300">This shipping will be applied upon checkout
+          </p>
+        </div>
+        <div class="md:w-1/2 w-full pr-4 md:pr-0 my-2 md:my-0">
+          <label class="block text-xs font-semibold pb-1">Special Notes for Delivery</label>
+          <textarea placeholder="Write something here..." formControlName="notes"
+            class="w-full border border-gray-300 rounded-xl text-sm placeholder-gray-300 pl-3 pt-3" rows="8"></textarea>
+        </div>
+      </div>
+      <div class="md:mt-5 mt-2">
+        <input type="checkbox" id="change" class="mr-2">
+        <label for="change" class="text-sm font-bold font-sans">Deliver to a different address?</label>
+      </div>
+      <div class="w-full md:w-1/3 md:mx-auto text-center md:my-16 bg-black rounded-3xl my-3 cursor-pointer">
+        <button type="submit" class="py-3 text-white">Checkout</button>
+      </div>
+    </form>
+  </div>
+  <app-footer></app-footer>
+</ion-content>

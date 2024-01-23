@@ -1,0 +1,43 @@
+<div class="flex flex-col md:flex-row items-center w-full py-3 bg-white">
+
+  <div class="w-full md:w-1/4 mb-3 md:mb-0 md:pr-3">
+    <img src="../../../assets/images/Screenshot_3.png" alt="" class="w-full md:w-44 inline-block">
+  </div>
+
+  <div class="w-full md:w-2/3 px-3 md:px-0">
+    <label for="search" class="sr-only">Search</label>
+    <div class="relative w-full">
+      <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+        <ion-icon class="text-gray-400" name="search-outline"></ion-icon>
+      </div>
+      <input type="text" id="search" [(ngModel)]="searchQuery" (input)="onSearch()"
+        class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Search">
+      <div class="absolute top-[10px] right-[10px] cursor-pointer text-gray-700 hover:text-gray-800 transition duration-300" *ngIf="searchQuery" (click)="clearSearch()">
+        <ion-icon name="close-outline" class="p-1 bg-gray-300 rounded-full"></ion-icon>
+      </div>
+    </div>
+  </div>
+
+  <div class="w-full px-4 mt-3 md:mt-0 md:w-2/4 md:pl-3 flex justify-between items-center text-sm font-bold text-gray-400">
+    <div class="mb-2 md:mb-0 cursor-pointer flex justify-between items-center hover:text-gray-600 transition duration-300"
+      routerLink="/home">
+      <ion-icon class="pr-3" name="home"></ion-icon>
+      <p>Home</p>
+    </div>
+    <div class="mb-2 md:mb-0 cursor-pointer flex justify-between items-center hover:text-gray-600 transition duration-300"
+      routerLink="/wishlist">
+      <ion-icon class="pr-3" name="heart"></ion-icon>
+      <p>Wishlist</p>
+    </div>
+    <div class="mb-2 md:mb-0 cursor-pointer flex justify-between items-center hover:text-gray-600 transition duration-300"
+      routerLink="/cart">
+      <ion-icon class="pr-3" name="cart"></ion-icon>
+      <p>Cart</p>
+    </div>
+    <div (click)="openDialog()" class="mb-2 md:mb-0 cursor-pointer flex justify-between items-center hover:text-gray-600 transition duration-300">
+      <ion-icon class="pr-3" name="person"></ion-icon>
+      <p>Profile</p>
+    </div>
+  </div>
+</div>

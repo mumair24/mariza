@@ -1,0 +1,76 @@
+<ion-header [translucent]="true">
+  <app-header></app-header>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <p class="font-bold text-lg w-full text-center py-16 pb-5">Payment Details</p>
+  </div>
+  <div class="w-full lg:w-[80%] lg:mx-auto px-5 lg:px-0">
+    <div class="md:flex md:justify-between mb-10">
+      <div class="border border-gray-200 p-2 rounded-2xl md:w-1/2 w-full mr-5">
+        <p class="font-bold font-sans md:text-base text-lg py-2">Order Details</p>
+        <p class="border border-t-gray-500"></p>
+        <div>
+          <p class="text-base md:text-xs font-medium pr-1 pt-1.5">Products: <span class="text-gray-400 text-base md:text-xs font-sans font-normal">{{cartItems.length}}</span></p>
+          <p class="text-base md:text-xs font-medium pr-1 pt-1.5">To: <span class="text-gray-400 text-base md:text-xs font-sans font-normal">{{deliveryForm.fName}}</span></p>
+          <p class="text-base md:text-xs font-medium pr-1 pt-1.5">Phone: <span class="text-gray-400 text-base md:text-xs font-sans font-normal">{{deliveryForm.phone}}</span></p>
+          <p class="text-base md:text-xs font-medium pr-1 pt-1.5">Email: <span class="text-gray-400 text-base md:text-xs font-sans font-normal">{{deliveryForm.email}}</span></p>
+          <p class="text-base md:text-xs font-medium pr-1 pt-1.5">Delivery Address: <span class="text-gray-400 text-base md:text-xs font-sans font-normal"> {{deliveryForm.street}}</span></p>
+          <p class="text-base md:text-xs font-medium pr-1 pt-1.5">Postal Code: <span class="text-gray-400 text-base md:text-xs font-sans font-normal">{{deliveryForm.postCode}}</span></p>
+          <p class="text-base md:text-xs font-medium pr-1 pt-1.5">Order Notes: <span class="text-gray-400 text-base md:text-xs font-sans font-normal">-</span></p>
+        </div>
+        <p class="border border-t-gray-500"></p>
+        <div class="">
+          <div class="flex justify-between items-center py-1">
+            <p class="text-sm md:text-xs font-medium pr-1">Total Amount:</p>
+            <p class="text-sm md:text-xs font-medium">${{totalAmount}}.00</p>
+          </div>
+          <div class="flex justify-between items-center py-1">
+            <p class="text-sm md:text-xs font-medium pr-1">Tax:</p>
+            <p class="text-sm md:text-xs font-medium">$35.00</p>
+          </div>
+          <div class="flex justify-between items-center py-1">
+            <p class="text-sm md:text-xs font-medium pr-1">Delivery Fee:</p>
+            <p class="text-sm md:text-xs font-medium">$30.00</p>
+          </div>
+          <p class="border border-t-gray-500"></p>
+          <div class="flex justify-between items-center py-1">
+            <p class="text-sm md:text-sm text-gray-800 font-extrabold pr-1">Subtotal:</p>
+            <p class="text-sm md:text-sm text-gray-800 font-extrabold">${{subTotal}}.00</p>
+          </div>
+        </div>
+      </div>
+      <div class="md:w-1/2 w-full">
+        <form [formGroup]="paymentForm" (ngSubmit)="formSubmit()">
+          <div class="w-full pr-4 mt-2">
+            <label for="cardName" class="block text-xs pb-1">Card Name</label>
+            <input type="text" class="w-full border border-gray-300 py-4 px-2 rounded-2xl text-xs placeholder-gray-400"
+              placeholder="John Doe" id="cardName" formControlName="cardName">
+          </div>
+          <div class="w-full pr-4 mt-4">
+            <label for="cardNum" class="block text-xs pb-1">Card Number</label>
+            <input type="text" class="w-full border border-gray-300 py-4 px-2 rounded-2xl text-xs placeholder-gray-400"
+              placeholder="XXXX XXXX XXXX XXXX" id="cardName" formControlName="cardNum">
+          </div>
+          <div class="flex justify-between items-center w-full mt-4">
+            <div class="w-1/2 pr-4">
+              <label for="expiry" class="block text-xs pb-1">Expiry</label>
+              <input type="text" class="w-full border border-gray-300 py-4 px-2 rounded-2xl text-xs placeholder-gray-400"
+                placeholder="MM/YY" id="expiry" formControlName="expiry">
+            </div>
+            <div class="w-1/2 pr-4">
+              <label for="cvc" class="block text-xs pb-1">CVC</label>
+              <input type="text" class="w-full border border-gray-300 py-4 px-2 rounded-2xl text-xs placeholder-gray-400"
+                placeholder="XXX" id="cvc" formControlName="cvc">
+            </div>
+          </div>
+          <div class="md:w-1/2 w-full border-2 mx-auto mt-6 cursor-pointer text-center bg-black text-white font-semibold rounded-3xl">
+            <button type="submit" class="py-3">Place Order</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</ion-content>
